@@ -1,0 +1,32 @@
+An Angular login form app with ...
+
+1. Username field expecting email
+2. Password field of characters between 6 and 20
+3. Login button (not disabled)
+4. Display an empty page when credentials are correct / if not please display proper error message
+...and a NodeJS/Express API service with :
+5. Single endpoint, to verify credentials against a Mock data ( Username: MTN_user, Password:
+MTN281#^@* )
+6. No database setup is required, please simple Mock helper
+7. API documentation
+8. Unit testing
+9. Not Auth mechanism required ( it could be nice to add )
+
+
+
+
+Assessment criteria:
+• The user inputs should be validated on both FE and API side
+• You are required to have a paragraph on “What to improve” section on the README that details
+the gaps in the application and how to improve them. This should be a paragraph of not more
+than 12 lines. This should not be related to how the code can be improved.
+• Follow conventional commits for all commits
+• You are required to use NgRx (9 or above) for managing state of the application
+• Follow correct naming conventions as per angular style guide
+• You are required to unit test your code (>= 75% on all statements, lines, branches and functions)
+using Karma and Jasmiine. This should be included in the README.md
+• You are required to test the login form and functionality, at minimum the submit method.
+• You need to test your reducer, effect, and selectors
+• You are required to use Twitter Bootstrap 4 for CSS
+• Code base to be hosted in Github with all instructions to execute code and run tests
+• API Swagger documentation
