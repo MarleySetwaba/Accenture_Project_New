@@ -53,7 +53,7 @@ app.post('/auth', async (req, res) => {
     }
 
     //CHECK PASSWORD
-    if(foundUser.password = password) {
+    if(foundUser.password === password) {
         const userResponse = {
             "email": foundUser.email,
             "username": foundUser.username
