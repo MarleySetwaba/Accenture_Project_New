@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const errorHandler = require('./middleware/errorHandler')
-
+const jwt = require('jsonwebtoken');
+const secret = 'bceThuF1geiP!DUyD73jk/KeXImnssfWKFnWXHxqykhA18/6nCl0vBYFJx00Wc5VN';
 
 
 //create custom middleware
@@ -28,50 +29,46 @@ app.use(express.urlencoded({ extended: false}));
 
 app.use(express.json());
 
+
+// Sample users data
+const users = [
+    { id: 1, email: "MTN_user", password: "test123" },
+  ];
+
 //ROUTES
 app.post('/auth', async (req, res) => {
 
-    const userDB = {
-        users: require('./model/user.json'),
-        setUsers: function(data) {
-            this.users = data
-        }
-    }
-
     const  { email, password } = req.body;
+
     if(!email)
     {
         return res.status(400).json({message: 'NO_EMAIL'});
     }
+
     if(!password){
         return res.status(400).json({message: 'NO_PASSWORD'});
     }
-    const foundUser = userDB.users.find(user => user.email === email)
+
+
+    const foundUser = users.find(u => u.email === email && u.password === password);
   
-    if(!foundUser){
-        res.status(401).json({message: 'EMAIL_NOT_FOUND'});
-    }
 
-    //CHECK PASSWORD
-    if(foundUser.password === password) {
-        const userResponse = {
-            "email": foundUser.email,
-            "username": foundUser.username
-        }
-        res.send(userResponse);
-    }
-    else{
-        res.status(401).json({message: 'PASSWORD_INCORRECT'});
-    }
-});
+    if (!foundUser) {
+        return res.status(401).json({ error: 'Invalid credentials' });
+      }
 
-app.get('/home', (req, res) => {
-    return res.status(401).json({message: 'Not Authorized'})
+
+
+
+const token = jwt.sign({ userId: foundUser.id}, secret);
+
+res.json({email,token});
 });
 
 
 
-app.use(errorHandler);
+
+
 
 app.listen(3001, () => {
     console.log('Running');

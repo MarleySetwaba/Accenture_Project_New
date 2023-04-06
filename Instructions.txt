@@ -1,12 +1,12 @@
 An Angular login form app with ...
 
-1. Username field expecting email
+1. Username field expecting email ---- DONE
 2. Password field of characters between 6 and 20
-3. Login button (not disabled)
+3. Login button (not disabled) ---DONE
 4. Display an empty page when credentials are correct / if not please display proper error message
 ...and a NodeJS/Express API service with :
 5. Single endpoint, to verify credentials against a Mock data ( Username: MTN_user, Password:
-MTN281#^@* )
+MTN281#^@* ) --- DONE
 6. No database setup is required, please simple Mock helper
 7. API documentation
 8. Unit testing
